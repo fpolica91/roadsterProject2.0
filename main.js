@@ -7,10 +7,12 @@ let currentSatellite;
 let frames = 0;
 let gameOver = false;
 let gameRunning = false;
+let isPaused = false;
+
 document.getElementById("game-canvas").style.display = "none";
 
-const myCanvas = document.getElementById('canvas');
-const ctx = myCanvas.getContext("2d");
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext("2d");
 
 // ---------- GAME CLASS ----------
 class Game {
@@ -84,7 +86,7 @@ class Asteroid {
     moveAsteroid() {
         this.x -= 8;
         if(this.x < 0){
-            this.x = myCanvas.width;
+            this.x = canvas.width;
             this.y = Math.floor((Math.random() * 550) + 1);
         }
     }
@@ -107,7 +109,7 @@ class Ufo {
     moveUfo() {
         this.x -= 11;
         if(this.x < 0){
-            this.x = myCanvas.width;
+            this.x = canvas.width;
             this.y = Math.floor((Math.random() * 550) + 1);
         }
     }
@@ -129,16 +131,16 @@ class Satellite {
     moveSatellite() {
         this.x -= 6;
         if(this.x < 0){
-            this.x = myCanvas.width;
+            this.x = canvas.width;
             this.y = Math.floor((Math.random() * 550) + 1);
         }
     }
 }; // end Satellite class
 
 // ---------- STARS BACKGROUND -----------
-var stars=[];
-var numStars= 150;
-var speed = 5;
+let stars = [];
+let numStars = 150;
+let speed = 5;
 
 function makeStar() {
 	return {
@@ -161,9 +163,9 @@ function updateStars() {
 		// Move the star first
 		stars[i].x-=Math.pow(stars[i].distance,2)/canvas.width*speed;
 		// If it's off-screen, reset it
-		if (stars[i].x<=0) {
-			stars[i]=makeStar();
-			stars[i].x=1;
+		if (stars[i].x <= 0) {
+			stars[i] = makeStar();
+			stars[i].x = 1;
 		}
 	}
 }
@@ -180,6 +182,7 @@ function detectCollision(obst, roadster) {
         obst.y + obst.width > roadster.y){
             roadster.img = roadster.explosion;
             gameOver = true;
+
         } 
 }
 
