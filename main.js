@@ -29,8 +29,8 @@ class Roadster {
     constructor() {
         this.x = 10;
         this.y = 275;
-        this.width = 125;
-        this.height = 100;
+        this.width = 100;
+        this.height = 75;
         this.img = "./images/roadster.png"
         this.explosion = "./images/explosion.png"
     }
@@ -44,22 +44,22 @@ class Roadster {
         switch(number){
             case 87: // UP
             if(this.y > 1){
-                this.y -= 40;
+                this.y -= 22;
             }
             break;
             case 83: // DOWN
-            if(this.y < 550){
-                this.y += 40;
+            if(this.y < 575){
+                this.y += 23;
             }
             break;
             case 65: // LEFT
             if(this.x > 20){
-                this.x -= 40;
+                this.x -= 30;
             }
             break;
             case 68: // RIGHT
             if(this.x < 1100){
-                this.x += 40;
+                this.x += 30;
             }
         }
     }
@@ -183,8 +183,11 @@ function detectCollision(obst, roadster) {
             roadster.img = roadster.explosion;
             gameOver = true;
 
+            setTimeout(function(){
+                document.getElementById("game-canvas").style.display = "none";
+            }, 750)
         } 
-}
+} // end detectCollision
 
 // ---------- UPDATE ---------
 function update(){
@@ -236,8 +239,10 @@ function update(){
     requestAnimationFrame(update);
 } // end of UPDATE function
 
-// ---------- START BUTTON ----------
-
+// ---------- GAMEOVER PAGE ----------
+function gameOverPage(){
+    window.location.href = "/end.html";
+}
 
 // ---------- START --------
 function startGame(){
