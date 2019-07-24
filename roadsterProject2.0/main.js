@@ -195,7 +195,7 @@ function detectCollision(obst, roadster) {
     if (obst.x < roadster.x + roadster.width &&
         obst.x + obst.width > roadster.x &&
         obst.y < roadster.y + roadster.height &&
-        obst.y + obst.width > roadster.y) {
+        obst.y + obst.height > roadster.y) {
         crash.play()
         roadster.img = roadster.explosion;
         gameOver = true;
@@ -280,6 +280,8 @@ function update() {
 
 // ---------- START --------
 function startGame() {
+    $('#start-button').hide(2000)
+    $('.jumbotron').slideUp(1500)
     gameOver = false;
     gameRunning = false
     // document.getElementById("game-canvas").style.display = "block";

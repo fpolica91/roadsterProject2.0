@@ -11,9 +11,24 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 </head>
 
 <body>
+    <div class="jumbotron">
+        <h1 class="display-4"> Roadster In Space </h1>
+
+        <p class="lead">Help Spaceman travel the universe, this will not be easy, you must avoid the obstacles to ensure
+            survival.
+            Use W and S to move the Roadster up and down. Use A and S to move forward or backwards.
+        </p>
+        <img src="./images/keys.png" alt="keys">
+        <hr class="my-4">
+        <p>Drive Safe, and may luck be on your side</p>
+
+    </div>
+
 
     <div id="game-canvas" class="d-flex justify-content-center">
         <canvas id="canvas" width="1250" height="650"></canvas>
@@ -22,8 +37,7 @@
     <div class="game-menu d-flex justify-content-center">
         <button class="btn btn-primary" id="start-button" onclick="startGame()">Start Game</button>
     </div>
-    <script src="https://code.jquery.com/jquery-3.4.1.js"
-        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
     <script src="./canvasDisplay.js"></script>
     <script src="main.js"></script>
     <script src="./gameEvents.js"></script>
